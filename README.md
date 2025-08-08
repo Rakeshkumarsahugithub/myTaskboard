@@ -147,7 +147,7 @@ src/
 - Loading states and error handling
 - Smooth animations and transitions
 - Intuitive navigation between views
-
+<!-- 
 ## Future Enhancements
 
 - [ ] Real database integration (PostgreSQL, MongoDB)
@@ -160,7 +160,7 @@ src/
 - [ ] Dark mode support
 - [ ] Task templates
 - [ ] Export/import functionality
-
+-->
 ## How It Works
 
 ### File Contents and Rendering Approach
@@ -193,18 +193,3 @@ The application primarily uses **Client-Side Rendering** because it's a highly i
 
 The app uses Next.js's App Router for routing but doesn't heavily rely on SSR or SSG features since the content is personalized and requires authentication. Instead, it uses a combination of a server-rendered shell (layout.js) with client-rendered content (page.js and components) to create a responsive single-page application experience.
 
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## License
-
-This project is licensed under the MIT License.
-
-## Support
-
-For support or questions, please open an issue in the repository.
