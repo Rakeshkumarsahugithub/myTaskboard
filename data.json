@@ -13,6 +13,13 @@
       "password": "$2b$10$1f5e3nqe8/7p/DehlrbNEe2fEPfSNr1FiYqI8Z/c8BYzhxAT.gHti",
       "name": "Rakesh",
       "createdAt": "2025-08-08T07:25:28.855Z"
+    },
+    {
+      "id": "7a8b7a39-6d01-4147-abc0-79df9fbbad62",
+      "email": "ram@gmail.com",
+      "password": "$2b$10$TpfHiJwH2yI8iBJXWf3F1eNVG/SeOQHb1K/PuFuSCCnajo6TADWP2",
+      "name": "Ram",
+      "createdAt": "2025-08-08T12:05:10.614Z"
     }
   ],
   "boards": [
