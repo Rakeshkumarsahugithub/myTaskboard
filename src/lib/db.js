@@ -1,18 +1,62 @@
 import fs from 'fs';
 import path from 'path';
+import { ensureTmpDirectory } from './vercel-utils';
 
-const DB_PATH = path.join(process.cwd(), 'data.json');
+/**
+ * VERCEL DEPLOYMENT SOLUTION
+ * 
+ * This implementation solves the read-only filesystem issue on Vercel by:
+ * 1. Using the writable /tmp directory in production (Vercel environment)
+ * 2. Using the regular data.json file in development
+ * 3. Copying initial data from the read-only data.json to /tmp on first run
+ * 
+ * LIMITATIONS:
+ * - Data in /tmp may not persist between function invocations
+ * - Limited to 512MB storage
+ * - For a more robust solution, consider using Vercel KV, Postgres, or another database service
+ */
+
+// Use /tmp directory in production, regular path in development
+const DB_PATH = process.env.VERCEL
+  ? path.join('/tmp', 'data.json')
+  : path.join(process.cwd(), 'data.json');
+
+// Path to the original data.json for initialization in production
+const ORIGINAL_DB_PATH = path.join(process.cwd(), 'data.json');
 
 // Initialize database if it doesn't exist
 function initDB() {
-  if (!fs.existsSync(DB_PATH)) {
-    const initialData = {
-      users: [],
-      boards: [],
-      tasks: []
-    };
-    fs.writeFileSync(DB_PATH, JSON.stringify(initialData, null, 2));
+  // Ensure /tmp directory exists in Vercel environment
+  if (process.env.VERCEL) {
+    ensureTmpDirectory();
   }
+  
+  if (!fs.existsSync(DB_PATH)) {
+    // If in production, copy from the original data.json if it exists
+    if (process.env.VERCEL && fs.existsSync(ORIGINAL_DB_PATH)) {
+      try {
+        const originalData = fs.readFileSync(ORIGINAL_DB_PATH, 'utf8');
+        fs.writeFileSync(DB_PATH, originalData);
+        console.log('Initialized database from original data.json');
+      } catch (error) {
+        console.error('Error copying from original data.json:', error);
+        createEmptyDB();
+      }
+    } else {
+      createEmptyDB();
+    }
+  }
+}
+
+// Create an empty database structure
+function createEmptyDB() {
+  const initialData = {
+    users: [],
+    boards: [],
+    tasks: []
+  };
+  fs.writeFileSync(DB_PATH, JSON.stringify(initialData, null, 2));
+  console.log('Created empty database');
 }
 
 // Read data from database
@@ -24,7 +68,18 @@ function readDB() {
 
 // Write data to database
 function writeDB(data) {
+  // Write to the temporary path
   fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
+  
+  // In development, also sync back to the original data.json
+  // This ensures data persistence between deployments
+  if (!process.env.VERCEL) {
+    try {
+      fs.writeFileSync(ORIGINAL_DB_PATH, JSON.stringify(data, null, 2));
+    } catch (error) {
+      console.error('Error syncing to original data.json:', error);
+    }
+  }
 }
 
 // User operations

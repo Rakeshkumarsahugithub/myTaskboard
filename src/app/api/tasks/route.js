@@ -9,10 +9,15 @@ import {
 } from '@/lib/db';
 import { requireAuth } from '@/lib/auth';
 import { generateId } from '@/lib/utils';
+import { ensureTmpDirectory } from '@/lib/vercel-utils';
 
 // GET - Get all tasks for a specific board
 export const GET = requireAuth(async (req) => {
   try {
+    // Ensure /tmp directory exists in Vercel environment
+    if (process.env.VERCEL) {
+      ensureTmpDirectory();
+    }
     const { searchParams } = new URL(req.url);
     const boardId = searchParams.get('boardId');
 
@@ -53,6 +58,10 @@ export const GET = requireAuth(async (req) => {
 // POST - Create a new task
 export const POST = requireAuth(async (req) => {
   try {
+    // Ensure /tmp directory exists in Vercel environment
+    if (process.env.VERCEL) {
+      ensureTmpDirectory();
+    }
     const { title, description, dueDate, boardId } = await req.json();
 
     if (!title || title.trim().length === 0) {
@@ -108,6 +117,10 @@ export const POST = requireAuth(async (req) => {
 // PUT - Update a task
 export const PUT = requireAuth(async (req) => {
   try {
+    // Ensure /tmp directory exists in Vercel environment
+    if (process.env.VERCEL) {
+      ensureTmpDirectory();
+    }
     const { id, title, description, status, dueDate, completed, priority } = await req.json();
 
     if (!id) {
@@ -155,6 +168,10 @@ export const PUT = requireAuth(async (req) => {
 // DELETE - Delete a task
 export const DELETE = requireAuth(async (req) => {
   try {
+    // Ensure /tmp directory exists in Vercel environment
+    if (process.env.VERCEL) {
+      ensureTmpDirectory();
+    }
     const { id } = await req.json();
 
     if (!id) {

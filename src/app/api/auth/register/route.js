@@ -2,9 +2,14 @@ import { NextResponse } from 'next/server';
 import { createUser, findUserByEmail } from '@/lib/db';
 import { hashPassword, generateToken } from '@/lib/auth';
 import { generateId, isValidEmail, isValidPassword } from '@/lib/utils';
+import { ensureTmpDirectory } from '@/lib/vercel-utils';
 
 export async function POST(request) {
   try {
+    // Ensure /tmp directory exists in Vercel environment
+    if (process.env.VERCEL) {
+      ensureTmpDirectory();
+    }
     const { name, email, password } = await request.json();
 
     // Validation

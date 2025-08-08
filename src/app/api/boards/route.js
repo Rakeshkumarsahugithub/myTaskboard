@@ -8,10 +8,15 @@ import {
 } from '@/lib/db';
 import { requireAuth } from '@/lib/auth';
 import { generateId } from '@/lib/utils';
+import { ensureTmpDirectory } from '@/lib/vercel-utils';
 
 // GET - Get all boards for the authenticated user
 export const GET = requireAuth(async (req) => {
   try {
+    // Ensure /tmp directory exists in Vercel environment
+    if (process.env.VERCEL) {
+      ensureTmpDirectory();
+    }
     const boards = getBoardsByUserId(req.userId);
     return NextResponse.json(boards);
   } catch (error) {
@@ -26,6 +31,10 @@ export const GET = requireAuth(async (req) => {
 // POST - Create a new board
 export const POST = requireAuth(async (req) => {
   try {
+    // Ensure /tmp directory exists in Vercel environment
+    if (process.env.VERCEL) {
+      ensureTmpDirectory();
+    }
     const { name } = await req.json();
     if (!name || name.trim().length === 0) {
       return NextResponse.json(
@@ -52,6 +61,10 @@ export const POST = requireAuth(async (req) => {
 // PUT - Update a board
 export const PUT = requireAuth(async (req) => {
   try {
+    // Ensure /tmp directory exists in Vercel environment
+    if (process.env.VERCEL) {
+      ensureTmpDirectory();
+    }
     const { id, name } = await req.json();
     if (!id || !name || name.trim().length === 0) {
       const response = NextResponse.json(
@@ -86,6 +99,10 @@ export const PUT = requireAuth(async (req) => {
 // DELETE - Delete a board
 export const DELETE = requireAuth(async (req) => {
   try {
+    // Ensure /tmp directory exists in Vercel environment
+    if (process.env.VERCEL) {
+      ensureTmpDirectory();
+    }
     const { id } = await req.json();
     if (!id) {
       return NextResponse.json(
