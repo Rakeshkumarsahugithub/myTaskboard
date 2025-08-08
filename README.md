@@ -3,8 +3,8 @@
 A modern, full-stack task management application built with Next.js that allows users to create multiple boards and manage their tasks efficiently.
 **[🚀 View Live Demo](https://my-taskboard-chi.vercel.app/)**
 <div style="display: flex; justify-content: space-between; align-items: center;">
-  <img src="https://github.com/user-attachments/assets/76502475-7ac4-48c2-bb30-fd9427c3a879" width="400" height="400" style="margin-right: 10px;">
-  <img src="https://github.com/user-attachments/assets/0ad18e83-9b90-452b-8ceb-0139e69318e8" width="500" height="500">
+  <img src="https://github.com/user-attachments/assets/76502475-7ac4-48c2-bb30-fd9427c3a879" width="360" height="400" style="margin-right: 10px;">
+  <img src="https://github.com/user-attachments/assets/0ad18e83-9b90-452b-8ceb-0139e69318e8" width="450" height="500">
 </div>
 ## Features
 
