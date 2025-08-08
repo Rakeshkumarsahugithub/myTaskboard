@@ -16,7 +16,7 @@ export default function AddTaskForm({ boardId, onTaskAdded }) {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/tasks', {
+      const response = await fetch('https://my-taskboard-v2gl.vercel.app/api/tasks', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -10,7 +10,7 @@ export default function TaskBoard({ board, onBack }) {
 
 const fetchTasks = useCallback(async () => {
   try {
-    const response = await fetch(`/api/tasks?boardId=${board.id}`, {
+    const response = await fetch(`https://my-taskboard-v2gl.vercel.app/api/tasks?boardId=${board.id}`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }

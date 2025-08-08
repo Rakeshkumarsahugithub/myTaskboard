@@ -14,7 +14,7 @@ export default function AddBoardForm({ onBoardAdded }) {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/boards', {
+      const response = await fetch('https://my-taskboard-v2gl.vercel.app/api/boards', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

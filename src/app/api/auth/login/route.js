@@ -45,7 +45,6 @@ export async function POST(request) {
 
     // Return user data (without password) and token
     const { password: _, ...userWithoutPassword } = user;
-    
     return NextResponse.json({
       user: userWithoutPassword,
       token
@@ -58,4 +57,4 @@ export async function POST(request) {
       { status: 500 }
     );
   }
-} 
+}
