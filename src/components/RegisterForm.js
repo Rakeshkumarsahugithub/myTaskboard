@@ -31,7 +31,7 @@ export default function RegisterForm({ onSwitchToLogin }) {
     setLoading(true);
 
     try {
-      const response = await fetch('https://my-taskboard-v2gl.vercel.app/api/auth/register', {
+      const response = await fetch('/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -167,4 +167,4 @@ export default function RegisterForm({ onSwitchToLogin }) {
       </div>
     </div>
   );
-} 
+}

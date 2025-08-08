@@ -25,7 +25,7 @@ export default function TaskCard({ task, onUpdate, onDelete }) {
   const handleToggleStatus = async () => {
     try {
       // Make the API call to update the task status
-      const response = await fetch('https://my-taskboard-v2gl.vercel.app/api/tasks', {
+      const response = await fetch('/api/tasks', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ export default function TaskCard({ task, onUpdate, onDelete }) {
 
   const handleSave = async () => {
     try {
-      const response = await fetch('https://my-taskboard-v2gl.vercel.app/api/tasks', {
+      const response = await fetch('/api/tasks', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ export default function TaskCard({ task, onUpdate, onDelete }) {
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to delete this task?')) {
       try {
-        const response = await fetch('https://my-taskboard-v2gl.vercel.app/api/tasks', {
+        const response = await fetch('/api/tasks', {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',

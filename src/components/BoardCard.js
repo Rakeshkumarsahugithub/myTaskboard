@@ -13,7 +13,7 @@ export default function BoardCard({ board, onUpdate, onDelete, onSelect }) {
   const handleSave = async () => {
     if (newName.trim() && newName !== board.name) {
       try {
-        const response = await fetch('https://my-taskboard-v2gl.vercel.app/api/boards', {
+        const response = await fetch('/api/boards', {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ export default function BoardCard({ board, onUpdate, onDelete, onSelect }) {
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to delete this board? All tasks will be lost.')) {
       try {
-        const response = await fetch('https://my-taskboard-v2gl.vercel.app/api/boards', {
+        const response = await fetch('/api/boards', {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
