@@ -8,28 +8,28 @@ export default function TaskBoard({ board, onBack }) {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchTasks();
-  }, [board.id]);
-
-  const fetchTasks = async () => {
-    try {
-      const response = await fetch(`/api/tasks?boardId=${board.id}`, {
-        headers: {
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
-        }
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setTasks(data);
+const fetchTasks = useCallback(async () => {
+  try {
+    const response = await fetch(`/api/tasks?boardId=${board.id}`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
-    } catch (error) {
-      console.error('Error fetching tasks:', error);
-    } finally {
-      setLoading(false);
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      setTasks(data);
     }
-  };
+  } catch (error) {
+    console.error('Error fetching tasks:', error);
+  } finally {
+    setLoading(false);
+  }
+}, [board.id]);
+
+useEffect(() => {
+  fetchTasks();
+}, [fetchTasks]);
 
   const handleTaskAdded = (newTask) => {
     setTasks([...tasks, newTask]);
