@@ -16,7 +16,7 @@ export default function Dashboard({ onBoardSelect }) {
 
   const fetchBoards = async () => {
     try {
-      const response = await fetch('/api/boards', {
+      const response = await fetch('https://my-taskboard-v2gl.vercel.app/api/boards', {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
