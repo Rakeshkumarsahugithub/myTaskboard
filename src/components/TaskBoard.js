@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import TaskCard from './TaskCard';
 import AddTaskForm from './AddTaskForm';
 
