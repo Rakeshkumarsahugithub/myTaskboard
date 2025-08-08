@@ -50,7 +50,7 @@ A modern, full-stack task management application built with Next.js that allows 
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Rakeshkumarsahugithub/myTaskboard.git
    cd mytaskboard
    ```
 
