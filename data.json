@@ -1,0 +1,78 @@
+{
+  "users": [
+    {
+      "id": "a74e0555-5256-43ec-a5dc-21a5270e8696",
+      "email": "rks@gmail.com",
+      "password": "$2b$10$SR6TyuuW2z0BBYwDdVNQZO49SxC9fNP8uPFeTT4iYDYPeJgg8Bj0K",
+      "name": "Rakesh",
+      "createdAt": "2025-08-06T14:44:20.979Z"
+    },
+    {
+      "id": "a703109b-8f6d-4f52-a1d4-e2dbe09fd51d",
+      "email": "rkss@gmail.com",
+      "password": "$2b$10$1f5e3nqe8/7p/DehlrbNEe2fEPfSNr1FiYqI8Z/c8BYzhxAT.gHti",
+      "name": "Rakesh",
+      "createdAt": "2025-08-08T07:25:28.855Z"
+    }
+  ],
+  "boards": [
+    {
+      "id": "a4737193-a02b-4d8e-8d0c-2262c7e121d7",
+      "name": "Work",
+      "userId": "a74e0555-5256-43ec-a5dc-21a5270e8696",
+      "createdAt": "2025-08-07T07:23:22.334Z"
+    },
+    {
+      "id": "c5040af9-7015-4791-bd98-96ce3572f599",
+      "name": "Grocery",
+      "userId": "a74e0555-5256-43ec-a5dc-21a5270e8696",
+      "createdAt": "2025-08-07T07:23:43.759Z"
+    },
+    {
+      "id": "6f15ea50-e0bc-4c46-a769-8ec5dc0fc9d5",
+      "name": "Learning",
+      "userId": "a74e0555-5256-43ec-a5dc-21a5270e8696",
+      "createdAt": "2025-08-07T07:23:53.862Z"
+    },
+    {
+      "id": "138fed67-587c-4701-bb06-a20a528365b6",
+      "name": "Personal",
+      "userId": "a74e0555-5256-43ec-a5dc-21a5270e8696",
+      "createdAt": "2025-08-07T07:24:06.580Z"
+    },
+    {
+      "id": "fd0faef7-5c09-4781-9faf-20d2973bbb5c",
+      "name": "Others",
+      "userId": "a74e0555-5256-43ec-a5dc-21a5270e8696",
+      "createdAt": "2025-08-07T07:24:25.795Z"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "37db31dd-1116-45c6-b017-96b12867c63f",
+      "title": "Rakesh",
+      "description": "ulfvyugiu",
+      "status": "pending",
+      "completed": false,
+      "priority": "low",
+      "dueDate": "2025-08-20",
+      "boardId": "a4737193-a02b-4d8e-8d0c-2262c7e121d7",
+      "userId": "a74e0555-5256-43ec-a5dc-21a5270e8696",
+      "createdAt": "2025-08-07T07:30:52.817Z",
+      "updatedAt": "2025-08-08T07:22:20.529Z"
+    },
+    {
+      "id": "127299db-042d-4388-a489-e6c582bcddf3",
+      "title": "Representative operations",
+      "description": "yvfigbiljno",
+      "status": "pending",
+      "completed": true,
+      "priority": "medium",
+      "dueDate": "2025-08-06",
+      "boardId": "a4737193-a02b-4d8e-8d0c-2262c7e121d7",
+      "userId": "a74e0555-5256-43ec-a5dc-21a5270e8696",
+      "createdAt": "2025-08-07T07:31:54.266Z",
+      "updatedAt": "2025-08-08T07:22:24.301Z"
+    }
+  ]
+}
